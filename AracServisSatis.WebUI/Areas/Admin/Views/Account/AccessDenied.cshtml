@@ -1,0 +1,23 @@
+﻿@model AracServisSatis.WebUI.Areas.Admin.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Erişim Engellendi";
+   
+}
+
+<div class="container text-center mt-5">
+    <div class="card shadow-lg p-4 mx-auto" style="max-width: 600px;">
+        <h1 class="text-danger mb-3">
+            <i class="bi bi-shield-lock-fill"></i> Erişim Engellendi
+        </h1>
+        <p class="fs-5 mb-4">
+            Bu sayfaya erişim yetkiniz bulunmamaktadır.<br />
+            Lütfen sistem yöneticinizle iletişime geçin.
+        </p>
+        <a href="/" class="btn btn-primary">
+            <i class="bi bi-house"></i> Ana Sayfaya Dön
+        </a>
+        <a href="/Admin/Account/Login" class="btn btn-outline-secondary ms-2">
+            <i class="bi bi-box-arrow-in-right"></i> Giriş Sayfasına Git
+        </a>
+    </div>
+</div>

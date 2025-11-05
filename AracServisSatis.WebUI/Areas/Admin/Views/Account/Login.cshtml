@@ -1,0 +1,54 @@
+﻿@model AracServisSatis.WebUI.Areas.Admin.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Giriş Yap";
+    Layout = null;
+}
+<link href="/admin/css/styles.css" rel="stylesheet" />
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success text-center mt-3">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-lg rounded-4">
+                <div class="card-body p-4">
+                    <h3 class="text-center mb-4">Giriş Yap</h3>
+
+                    <form asp-action="Login" method="post">
+                        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Username" class="form-label">Kullanıcı Adı</label>
+                            <input asp-for="Username" class="form-control" placeholder="Kullanıcı adınızı girin" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Password" class="form-label">Şifre</label>
+                            <input asp-for="Password" class="form-control" placeholder="Şifrenizi girin" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 mb-3">Giriş Yap</button>
+
+                        <div class="text-center">
+                            <a asp-action="Register" class="text-decoration-none">Hesabınız yok mu? Kayıt olun</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

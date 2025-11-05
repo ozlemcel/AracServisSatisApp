@@ -1,0 +1,35 @@
+﻿@using AracServisSatis.Entities.Concrete
+
+@{
+    ViewData["Title"] = "Roles";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model IEnumerable<AppRole>
+
+<h2>Roller</h2>
+
+<form asp-action="CreateRole" method="post" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="roleName" class="form-control" placeholder="Yeni rol adı girin" required />
+        <button type="submit" class="btn btn-danger">Ekle</button>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Rol Adı</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model)
+        {
+            <tr>
+                <td>@role.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

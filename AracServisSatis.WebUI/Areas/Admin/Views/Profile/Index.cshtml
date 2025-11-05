@@ -1,0 +1,61 @@
+﻿@model AracServisSatis.Models.EditProfileViewModel
+@{
+    ViewData["Title"] = "Profilim";
+    
+}
+
+<h2 class="m-3">Profil Bilgilerim</h2>
+
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success">@ViewBag.Success</div>
+}
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<form asp-action="Index" method="post" class="w-50">
+    <div class="m-3">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="m-3">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="m-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="m-3">
+        <label asp-for="PhoneNumber" class="form-label"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="m-3">
+        <label asp-for="NewPassword" class="form-label"></label>
+        <input asp-for="NewPassword" class="form-control" />
+        <span asp-validation-for="NewPassword" class="text-danger"></span>
+    </div>
+
+    <div class="m-3">
+        <label asp-for="ConfirmPassword" class="form-label"></label>
+        <input asp-for="ConfirmPassword" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="m-3 btn btn-primary">Güncelle</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

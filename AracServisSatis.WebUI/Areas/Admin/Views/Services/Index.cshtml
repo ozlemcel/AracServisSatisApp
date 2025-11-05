@@ -1,0 +1,102 @@
+﻿@model IEnumerable<AracServisSatis.Entities.Concrete.Servis>
+
+@{
+    ViewData["Title"] = "Servis Kayıtları";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3 class="m-2">Servis Kayıtları</h3>
+
+<p>
+    <a class="btn btn-outline-primary m-2" asp-action="Create">Yeni Ekle</a>
+</p>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiseGelisTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AracSorunu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServisUcreti)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServistenCikisTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YapilanIslemler)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GarantiKapsamindaMi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AracPlaka)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marka)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KasaTipi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SaseNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notlar)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiseGelisTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AracSorunu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServisUcreti)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServistenCikisTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YapilanIslemler)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GarantiKapsamindaMi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AracPlaka)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marka)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KasaTipi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaseNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notlar)
+            </td>
+            <td>
+                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a>
+                    
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

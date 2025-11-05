@@ -1,0 +1,41 @@
+﻿@model AracServisSatis.Entities.Concrete.Satis
+
+@{
+    ViewData["Title"] = "Satış Sil";
+}
+
+<div class="m-2">
+    
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SatisFiyati)
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.SatisFiyati.ToString("c")
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SatisTarihi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SatisTarihi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Arac)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Arac.AracBilgi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Musteri)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Musteri.AdSoyad)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" method="post" style="display:inline;" onsubmit="return confirm('Bu kaydı silmek istediğinize emin misiniz?');">
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a class="btn btn-primary m-2" asp-action="Index">Listeye Dön</a>
+    </form>
+</div>

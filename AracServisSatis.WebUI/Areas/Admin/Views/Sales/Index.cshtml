@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AracServisSatis.Entities.Concrete.Satis>
+
+@{
+    ViewData["Title"] = "Satış Kayıtları";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3 class="m-2">Satış Kayıtları</h3>
+
+<p>
+    <a class="btn btn-outline-primary m-2" asp-action="Create">Yeni Ekle</a>
+</p>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SatisFiyati)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SatisTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Arac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Musteri)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @item.SatisFiyati.ToString("c")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SatisTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Arac.AracBilgi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Musteri.AdSoyad)
+            </td>
+            <td>
+                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a>
+                   
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

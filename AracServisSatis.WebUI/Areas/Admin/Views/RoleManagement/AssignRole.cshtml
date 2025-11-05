@@ -1,0 +1,69 @@
+﻿@using AracServisSatis.Entities.Concrete
+@model IEnumerable<AppRole>
+
+@{
+    ViewData["Title"] = "AssignRole";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+   
+}
+
+
+@{
+    var user = ViewBag.User as AppUser;
+    var userRoles = ViewBag.UserRoles as IList<string>;
+}
+
+<h2 class="mb-3">@user.UserName kullanıcısı için Rol Yönetimi</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<h4>🧩 Mevcut Roller:</h4>
+@if (userRoles.Any())
+{
+    <ul class="list-group mb-4">
+        @foreach (var role in userRoles)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                @role
+                <form asp-action="RemoveRole" method="post" style="display:inline;">
+                    <input type="hidden" name="userId" value="@user.Id" />
+                    <input type="hidden" name="roleName" value="@role" />
+                    <button type="submit" class="btn btn-danger btn-sm">Kaldır</button>
+                </form>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>Bu kullanıcıya henüz rol atanmadı.</p>
+}
+
+<h4>✨ Yeni Rol Ata:</h4>
+<form asp-action="AssignRole" method="post">
+    <input type="hidden" name="userId" value="@user.Id" />
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <select name="roleName" class="form-select">
+                @foreach (var role in Model)
+                {
+                    <option value="@role.Name">@role.Name</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-danger">Ekle</button>
+        </div>
+    </div>
+</form>
+
+<a href="@Url.Action("Index", "RoleManagement" )" class="btn btn-primary mt-3">⬅ Geri Dön</a>
+
+
